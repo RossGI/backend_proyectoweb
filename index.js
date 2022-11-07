@@ -1,4 +1,9 @@
 const express = require('express');
+const clientesRoutes = require('./src/clientes/routes');
+const cotizacionesRoutes = require('./src/cotizaciones/routes');
+const empleadosRoutes = require('./src/empleados/routes');
+const rutasRoutes = require('./src/rutas/routes');
+const tarifasRoutes = require('./src/tarifas/routes');
 
 const app = express();
 
@@ -19,6 +24,12 @@ app.get('/usuarios', function(req, res){ // otro end point
 app.get('/notas', function(req, res){ // otro end point
     res.sendFile(__dirname + '/notas.txt');
 })
+
+app.use('/clientes',clientesRoutes);
+app.use('/cotizaciones',cotizacionesRoutes);
+app.use('/empleados',empleadosRoutes);
+app.use('/rutas',rutasRoutes);
+app.use('/tarifas',tarifasRoutes);
 
 app.listen(port, () => {
     console.log('app is running port ' + port);
