@@ -5,7 +5,7 @@ const authMiddelware = require('./../middlewares/auth');
 router.get('/', authMiddelware, controlador.traerRuta);
 router.get('/:id', authMiddelware, controlador.traerUnaRuta);
 router.post('/', authMiddelware, controlador.crearRuta);
-router.post('/', authMiddelware, controlador.eliminarRuta);
-router.get('/:id', authMiddelware, controlador.actualizarRutas);
+router.put('/', authMiddelware, controlador.eliminarRuta);
+router.put('/:id', authMiddelware, controlador.actualizarRutas);
 
 module.exports = router;

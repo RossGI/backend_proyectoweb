@@ -5,7 +5,7 @@ const authMiddelware = require('./../middlewares/auth');
 router.get('/', authMiddelware, controlador.traerTarifas);
 router.get('/:id', authMiddelware, controlador.traerUnaTarifa);
 router.post('/', authMiddelware, controlador.crearTarifa);
-router.post('/', authMiddelware, controlador.eliminarTarifa);
-router.get('/:id', authMiddelware, controlador.actualizarTarifa);
+router.put('/', authMiddelware, controlador.eliminarTarifa);
+router.put('/:id', authMiddelware, controlador.actualizarTarifa);
 
 module.exports = router;
