@@ -13,8 +13,11 @@ function traerUnaRuta(req, res) {
 }
 
 function crearRuta(req, res) {
-    const ruta = req.query.ruta;
-    res.send('se creo la ruta' + ruta);
+    const fecha_inicio = req.body.fecha_inicio;
+    const fecha_fin = req.body.fecha_fin;
+    const origen = req.body.origen;
+    const destino = req.body.destino;
+    res.send('se creo la ruta');
 }
 
 function eliminarRuta(req, res) {

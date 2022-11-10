@@ -13,8 +13,15 @@ function traerUnUsuario(req, res) {
 }
 
 function crearUsuario(req, res) {
-    const nombre = req.query.nombre;
-    res.send('se creo el usuario' + nombre);
+    const nombre = req.body.nombre;
+    const apellido = req.body.apellido;
+    const correo = req.body.correo;
+    const telefono = req.body.telefono;
+    const contraseña = req.body.contraseña;
+    const rol = req.body.rol;
+    const direccion = req.body.direccion;
+    const rfc = req.body.rfc;
+    res.send('===Usuario creado===' + '\nNombre: ' + nombre + '\nCorreo: ' + correo + '\nTeléfono: ' + telefono);
 }
 
 function eliminarUsuario(req, res) {

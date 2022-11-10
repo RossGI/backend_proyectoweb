@@ -13,7 +13,12 @@ function traerUnEmpleado(req, res) {
 }
 
 function crearEmpleado(req, res) {
-    const nombre = req.query.nombre;
+    const nombre = req.body.nombre;
+    const apellido = req.body.apellido;
+    const correo = req.body.correo;
+    const telefono = req.body.telefono;
+    const contraseña = req.body.contraseña;
+    const puesto = req.body.puesto;
     res.send('se creo el usuario' + nombre);
 }
 

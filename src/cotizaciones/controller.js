@@ -13,8 +13,11 @@ function traerUnaCotizacion(req, res) {
 }
 
 function crearCotizacion(req, res) {
-    const ruta = req.query.ruta;
-    res.send('se creo la ruta' + ruta);
+    const ruta = req.body.ruta;
+    const fecha = req.body.fecha;
+    const medidas_volumen = req.body.medidas_volumen;
+    const referencia = req.body.referencia;
+    res.send('===Cotización creada===' + '\nRuta: ' + ruta + '\nFecha: ' + fecha + '\nMedidas de volumen: ' + medidas_volumen + '\nReferencia ' + referencia);
 }
 
 function eliminarCotizacion(req, res) {

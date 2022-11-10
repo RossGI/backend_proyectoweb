@@ -13,7 +13,10 @@ function traerUnaTarifa(req, res) {
 }
 
 function crearTarifa(req, res) {
-    const tarifa = req.query.tarifa;
+    const flete = req.body.flete;
+    const volumen = req.body.volumen;
+    const peso = req.body.peso;
+    
     res.send('se creo la tarifa' + tarifa);
 }
 
