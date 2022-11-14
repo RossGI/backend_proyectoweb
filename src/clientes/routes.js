@@ -7,7 +7,7 @@ router.get('/:id', authMiddelware, controlador.traerUnUsuario);
 router.post('/', authMiddelware, controlador.crearUsuarioSelf);
 router.put('/', authMiddelware, controlador.eliminarUsuarioSelf);
 router.post('/', authMiddelware, controlador.crearUsuarioAdm);
-router.put('/', authMiddelware, controlador.eliminarUsuarioAdm);
-router.put('/:id', authMiddelware, controlador.actualizarUsuarios);
+router.put('/:id', authMiddelware, controlador.actualizarUsuarioAdm);
+router.put('/', authMiddelware, controlador.actualizarUsuarios);
 
 module.exports = router;

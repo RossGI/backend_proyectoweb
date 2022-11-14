@@ -21,13 +21,15 @@ function crearUsuarioSelf(req, res) {
     const rol = req.body.rol;
     const direccion = req.body.direccion;
     const rfc = req.body.rfc;
-    const status = req.body.status;
-    res.send('===Usuario creado===' + '\nNombre: ' + nombre + '\nCorreo: ' + correo + '\nTeléfono: ' + telefono + '\nEstátus: ' + status);
+    const status = 'activo';
+    res.send('===Usuario creado===' + '\nNombre: ' + nombre + '\nCorreo: ' + correo + 
+    '\nTeléfono: ' + telefono + '\nContraseña:' + contraseña + '\nRol: ' + rol +  
+    '\nDirección: ' + direccion + '\nRFC: ' + rfc  + '\nEstátus: ' + status);
 }
 
 //se cambia el status del usuario
 function eliminarUsuarioSelf(req, res) {
-    const status = req.query.status;
+    const status = 'no activo';
     res.send('se elimino el usuario' + nombre);
 }
 
@@ -41,13 +43,16 @@ function crearUsuarioAdm(req, res) {
     const direccion = req.body.direccion;
     const rfc = req.body.rfc;
     const status = req.body.status;
-    res.send('===Usuario creado===' + '\nNombre: ' + nombre + '\nCorreo: ' + correo + '\nTeléfono: ' + telefono + '\nEstátus: ' + status);
+    res.send('===Usuario creado===' + '\nNombre: ' + nombre + '\nCorreo: ' + correo + 
+    '\nTeléfono: ' + telefono + '\nContraseña:' + contraseña + '\nRol: ' + rol +  
+    '\nDirección: ' + direccion + '\nRFC: ' + rfc  + '\nEstátus: ' + status);
 }
 
 //se cambia el status del usuario
-function eliminarUsuarioAdm(req, res) {
-    const status = req.query.status;
-    res.send('se elimino el usuario' + nombre);
+function actualizarUsuarioAdm(req, res) {
+    const id = req.params.id
+    const status = 'no activo';
+    res.send('se elimino el usuario' + id);
 }
 
 function actualizarUsuarios(req, res) {
@@ -59,7 +64,10 @@ function actualizarUsuarios(req, res) {
     const rol = req.body.rol;
     const direccion = req.body.direccion;
     const rfc = req.body.rfc;
-    res.send('===Usuario creado===' + '\nNombre: ' + nombre + '\nCorreo: ' + correo + '\nTeléfono: ' + telefono + '\nEstátus: ' + status);
+    const status = req.body.status
+    res.send('===Usuario actualizado===' + '\nNombre: ' + nombre + '\nCorreo: ' + correo + 
+    '\nTeléfono: ' + telefono + '\nContraseña:' + contraseña + '\nRol: ' + rol +  
+    '\nDirección: ' + direccion + '\nRFC: ' + rfc  + '\nEstátus: ' + status);
 }
 
 module.exports = {
@@ -68,6 +76,6 @@ module.exports = {
     crearUsuarioSelf,
     eliminarUsuarioSelf,
     crearUsuarioAdm,
-    eliminarUsuarioAdm,
+    actualizarUsuarioAdm,
     actualizarUsuarios
 };
