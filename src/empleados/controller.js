@@ -19,22 +19,23 @@ function crearEmpleado(req, res) {
     const telefono = req.body.telefono;
     const contraseña = req.body.contraseña;
     const puesto = req.body.puesto;
+    const status = req.body.status;
     res.send('se creo el usuario' + nombre);
 }
 
 function eliminarEmpleado(req, res) {
-    const nombre = req.query.nombre;
+    const status = req.query.status;
     res.send('se elimino el usuario' + nombre);
 }
 
-//NO SE COMO, SOLO COPIE POR MIENTRAS
 function actualizarEmpleado(req, res) {
-    const activos = req.query.activos;
-    if(activos === "true") {
-        res.send('solo los usuarios activos (act)');
-    } else {
-        res.send('todos los usuarios (act)');
-    }
+    const nombre = req.body.nombre;
+    const apellido = req.body.apellido;
+    const correo = req.body.correo;
+    const telefono = req.body.telefono;
+    const contraseña = req.body.contraseña;
+    const puesto = req.body.puesto;
+    res.send('se creo el usuario' + nombre);
 }
 
 module.exports = {

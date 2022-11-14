@@ -17,22 +17,21 @@ function crearCotizacion(req, res) {
     const fecha = req.body.fecha;
     const medidas_volumen = req.body.medidas_volumen;
     const referencia = req.body.referencia;
+    const status = req.body.status;
     res.send('===Cotización creada===' + '\nRuta: ' + ruta + '\nFecha: ' + fecha + '\nMedidas de volumen: ' + medidas_volumen + '\nReferencia ' + referencia);
 }
 
 function eliminarCotizacion(req, res) {
-    const ruta = req.query.ruta;
+    const status = req.query.status;
     res.send('se elimino la ruta' + ruta);
 }
 
-//NO SE COMO, SOLO COPIE POR MIENTRAS
 function actualizarCotizacion(req, res) {
-    const activos = req.query.activos;
-    if(activos === "true") {
-        res.send('solo los usuarios activos (ruta)');
-    } else {
-        res.send('todos los usuarios (ruta)');
-    }
+    const ruta = req.body.ruta;
+    const fecha = req.body.fecha;
+    const medidas_volumen = req.body.medidas_volumen;
+    const referencia = req.body.referencia;
+    res.send('===Cotización creada===' + '\nRuta: ' + ruta + '\nFecha: ' + fecha + '\nMedidas de volumen: ' + medidas_volumen + '\nReferencia ' + referencia);
 }
 
 module.exports = {
