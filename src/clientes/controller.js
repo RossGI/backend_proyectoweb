@@ -51,8 +51,19 @@ function crearUsuarioAdm(req, res) {
 //se cambia el status del usuario
 function actualizarUsuarioAdm(req, res) {
     const id = req.params.id
-    const status = 'no activo';
-    res.send('se elimino el usuario' + id);
+    const nombre = req.body.nombre;
+    const apellido = req.body.apellido;
+    const correo = req.body.correo;
+    const telefono = req.body.telefono;
+    const contraseña = req.body.contraseña;
+    const rol = req.body.rol;
+    const direccion = req.body.direccion;
+    const rfc = req.body.rfc;
+    const status = req.body.status
+    res.send('se actualizó el usuario' + id);
+    res.send('===Usuario actualizado===' + '\nNombre: ' + nombre + '\nCorreo: ' + correo + 
+    '\nTeléfono: ' + telefono + '\nContraseña:' + contraseña + '\nRol: ' + rol +  
+    '\nDirección: ' + direccion + '\nRFC: ' + rfc  + '\nEstátus: ' + status);
 }
 
 function actualizarUsuarios(req, res) {
@@ -65,9 +76,7 @@ function actualizarUsuarios(req, res) {
     const direccion = req.body.direccion;
     const rfc = req.body.rfc;
     const status = req.body.status
-    res.send('===Usuario actualizado===' + '\nNombre: ' + nombre + '\nCorreo: ' + correo + 
-    '\nTeléfono: ' + telefono + '\nContraseña:' + contraseña + '\nRol: ' + rol +  
-    '\nDirección: ' + direccion + '\nRFC: ' + rfc  + '\nEstátus: ' + status);
+   
 }
 
 module.exports = {
