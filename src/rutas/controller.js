@@ -25,14 +25,12 @@ function eliminarRuta(req, res) {
     res.send('se elimino la ruta' + ruta);
 }
 
-//NO SE COMO, SOLO COPIE POR MIENTRAS
 function actualizarRutas(req, res) {
-    const activos = req.query.activos;
-    if(activos === "true") {
-        res.send('solo los usuarios activos (ruta)');
-    } else {
-        res.send('todos los usuarios (ruta)');
-    }
+    const fecha_inicio = req.body.fecha_inicio;
+    const fecha_fin = req.body.fecha_fin;
+    const origen = req.body.origen;
+    const destino = req.body.destino;
+    res.send('se actualizó la ruta');
 }
 
 module.exports = {

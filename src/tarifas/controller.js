@@ -25,14 +25,11 @@ function eliminarTarifa(req, res) {
     res.send('se elimino la tarifa' + tarifa);
 }
 
-//NO SE COMO, SOLO COPIE POR MIENTRAS
 function actualizarTarifa(req, res) {
-    const activos = req.query.activos;
-    if(activos === "true") {
-        res.send('solo los usuarios activos (tar)');
-    } else {
-        res.send('todos los usuarios (tar)');
-    }
+    const flete = req.body.flete;
+    const volumen = req.body.volumen;
+    const peso = req.body.peso;
+    res.send('se actualizó la tarifa' + tarifa);
 }
 
 module.exports = {
