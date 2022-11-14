@@ -35,7 +35,7 @@ function actualizarEmpleado(req, res) {
     const telefono = req.body.telefono;
     const contraseña = req.body.contraseña;
     const puesto = req.body.puesto;
-    res.send('se creo el usuario' + nombre);
+    res.send('se creo actualizó' + nombre);
 }
 
 module.exports = {
