@@ -59,7 +59,7 @@ function actualizarUsuarios(req, res) {
     const rol = req.body.rol;
     const direccion = req.body.direccion;
     const rfc = req.body.rfc;
-    res.send('===Usuario creado===' + '\nNombre: ' + nombre + '\nCorreo: ' + correo + '\nTeléfono: ' + telefono + '\nEstátus: ' + status);
+    res.send('===Usuario creado===' + '\nNombre: ' + nombre + '\nCorreo: ' + correo + '\nTeléfono: ' + telefono);
 }
 
 module.exports = {
