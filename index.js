@@ -12,14 +12,18 @@ const app = express();
 const port = process.env.PORT || 3000; 
 
 
+app.use('/public',express.static(__dirname + '/public'));
 
-app.get('', function(req, res) { //end point raiz
-    res.sendFile(__dirname + '/views/inicio.html');
+
+app.get('/', function(req, res) { //end point raiz
+    const url = __dirname + '/src/views/inicio.html';
+    res.sendFile(url);
 })
 
 
-app.get('/contacto', function(req, res){ // otro end point
-    res.send('Esta es la pagina de contacto!');
+app.get('/servicios', function(req, res){ // otro end point
+    const url = __dirname + '/src/views/servicios.html';
+    res.sendFile(url);
 })
 
 

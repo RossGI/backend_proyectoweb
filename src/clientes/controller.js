@@ -31,15 +31,21 @@ function traerUnUsuario(req, res) {
     const id = req.params.id;
   
     modelo.findOne({_id: id}).then(response =>{
-        res.send(response);
+        if(response){
+            res.send(response);
+        }
+
+        else{
+            res.status(404).send('No se encontró el usuario')
+        }
 
     }).catch(err =>{
-        console.log('el id no es válido',err);
-        res.status(400).send();
+        res.status(400).send('El ID no es correcto');
     }) 
     
 }
 
+//Corregir
 function crearUsuarioSelf(req, res) {
     const nombre = req.body.nombre;
     const apellido = req.body.apellido;
@@ -63,63 +69,76 @@ function crearUsuarioAdm(req, res) {
         res.send(respuesta);
 
     }).catch(err =>{
-        res.status(400).send('no se pudo guardar el contacto');
+        res.status(400).send('No se pudo guardar el usuario');
     });
 }
 
-//se cambia el status del usuario
+
+
 function actualizarUsuarioAdm(req, res) {
 
     const id = req.params.id;
-        const nombre = req.body.nombre;
-        const apellido = req.body.apellido;
-        const correo = req.body.correo;
-        const telefono = req.body.telefono;
-        const contraseña = req.body.contraseña;
-        const rol = req.body.rol;
-        const direccion = req.body.direccion;
-        const rfc = req.body.rfc;
-        modelo.findOne({_id : id}).then(response =>{
+    const nombre = req.body.nombre;
+    const apellido = req.body.apellido;
+    const correo = req.body.correo;
+    const telefono = req.body.telefono;
+    const contraseña = req.body.contraseña;
+    const rol = req.body.rol;
+    const direccion = req.body.direccion;
+    const rfc = req.body.rfc;
+    modelo.findOne({_id : id}).then(response =>{
+        
+        if(response){
+
             if(nombre != null){
+
                 response.nombre = nombre;
             }
-            
+                
             if(apellido != null){
                 response.apellido = apellido;
             }
-            
+                
             if(correo != null){
                 response.correo = correo;
             }
-           
+               
             if(telefono != null){
                 response.telefono = telefono;
             }
-
+    
             if(contraseña != null){
                 response.contraseña = contraseña;
             }
-        
+            
             if(rol != null){
                 response.rol = rol;
             }
-            
+                
             if(direccion != null){
                 response.direccion = direccion;
             }
-           
+               
             if(rfc != null){
                 response.rfc = rfc;
             }
-           
-
+               
+    
             response.save();
 
-        }).catch(err =>{
-            res.status(400).send('no se puede actualizar');
-        })
+        }
+
+        else{
+            res.status(404).send('No se encontró el usuario');
+        }
+
+
+    }).catch(err =>{
+        res.status(400).send('El ID no es correcto');
+    })
 }
 
+//Corregir 
 function actualizarUsuarios(req, res) {
     const nombre = req.body.nombre;
         const apellido = req.body.apellido;
@@ -170,11 +189,35 @@ function actualizarUsuarios(req, res) {
         })
 }
 
+
+
+function borrarUnUsuario(req,res){
+    const id = req.params.id;
+    modelo.findOne({id_: id}).then(respuesta =>{
+        if(respuesta){
+            respuesta.status = 0;
+            respuesta.save();
+            res.send('Usuario eliminado');
+        }
+
+        else{
+            res.status(404).send('No se encontró el usuario');
+        }
+        
+    }).catch(err =>{
+        res.status(400).send('El ID no es correcto');
+    })
+
+}
+
+
+
 module.exports = {
     traerUnUsuario,
     traerUsuarios,
     crearUsuarioSelf,
     crearUsuarioAdm,
     actualizarUsuarioAdm,
-    actualizarUsuarios
+    actualizarUsuarios,
+    borrarUnUsuario
 };
