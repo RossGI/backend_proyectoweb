@@ -28,8 +28,69 @@ app.get('/servicios', function(req, res){ // otro end point
 
 
 
-app.get('/notas', function(req, res){ // otro end point
-    res.sendFile(__dirname + '/notas.txt');
+app.get('/iniciar_sesion', function(req, res){ // otro end point
+    const url = __dirname + '/src/views/iniciar_sesion.html';
+    res.sendFile(url);
+})
+
+
+app.get('/crear_cuenta', function(req, res){ // otro end point
+    const url = __dirname + '/src/views/crear_cuenta.html';
+    res.sendFile(url);
+})
+
+
+app.get('/envios', function(req, res){ // otro end point
+    const url = __dirname + '/src/views/envios.html';
+    res.sendFile(url);
+})
+
+
+app.get('/destinos_horarios', function(req, res){ // otro end point
+    const url = __dirname + '/src/views/destinos_horarios.html';
+    res.sendFile(url);
+})
+
+
+app.get('/sucursales', function(req, res){ // otro end point
+    const url = __dirname + '/src/views/sucursales.html';
+    res.sendFile(url);
+})
+
+
+app.get('/cotizar', function(req, res){ // otro end point
+    const url = __dirname + '/src/views/cotizar.html';
+    res.sendFile(url);
+})
+
+
+app.get('/loginTemporal', function(req, res){ // otro end point
+    const url = __dirname + '/src/views/loginTemporal.html';
+    res.sendFile(url);
+})
+
+
+app.get('/login_admin', function(req, res){ // otro end point
+    const url = __dirname + '/src/views/login_admin.html';
+    res.sendFile(url);
+})
+
+
+app.get('/login_logistica', function(req, res){ // otro end point
+    const url = __dirname + '/src/views/login_logistica.html';
+    res.sendFile(url);
+})
+
+
+app.get('/login_ventas', function(req, res){ // otro end point
+    const url = __dirname + '/src/views/login_ventas.html';
+    res.sendFile(url);
+})
+
+
+app.get('/crear_cuenta_admin', function(req, res){ // otro end point
+    const url = __dirname + '/src/views/crear_cuenta_admin.html';
+    res.sendFile(url);
 })
 
 
