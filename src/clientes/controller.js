@@ -1,9 +1,10 @@
 const modelo = require('.././modelos/clientes');
 
 
+
 function traerUsuarios(req, res) {
     const activos = req.query.activos
-    var status = 0;
+    
     if(activos === "true"){
         modelo.find({status : 1}).then(response =>{
             res.send(response);
@@ -47,19 +48,15 @@ function traerUnUsuario(req, res) {
 
 //Corregir
 function crearUsuarioSelf(req, res) {
-    const nombre = req.body.nombre;
-    const apellido = req.body.apellido;
-    const correo = req.body.correo;
-    const telefono = req.body.telefono;
-    const contraseña = req.body.contraseña;
-    const rol = req.body.rol;
-    const direccion = req.body.direccion;
-    const rfc = req.body.rfc;
-    const status = 'activo';
-    res.send('===Usuario creado===' + '\nNombre: ' + nombre + '\nCorreo: ' + correo + 
-    '\nTeléfono: ' + telefono + '\nContraseña:' + contraseña + '\nRol: ' + rol +  
-    '\nDirección: ' + direccion + '\nRFC: ' + rfc  + '\nEstátus: ' + status);
+    const datos = req.body;
+    modelo.create(datos).then(respuesta =>{
+        res.send(respuesta);
+
+    }).catch(err =>{
+        res.status(400).send('No se pudo guardar el usuario');
+    });
 }
+
 
 
 
@@ -87,7 +84,7 @@ function actualizarUsuarioAdm(req, res) {
     const direccion = req.body.direccion;
     const rfc = req.body.rfc;
     modelo.findOne({_id : id}).then(response =>{
-        
+
         if(response){
 
             if(nombre != null){
@@ -148,7 +145,7 @@ function actualizarUsuarios(req, res) {
         const rol = req.body.rol;
         const direccion = req.body.direccion;
         const rfc = req.body.rfc;
-        modelo.findOne({_id : id}).then(response =>{
+        modelo.find({}).then(response =>{
             if(nombre != null){
                 response.nombre = nombre;
             }
