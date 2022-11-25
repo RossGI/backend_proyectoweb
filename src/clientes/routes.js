@@ -4,7 +4,6 @@ const authMiddelware = require('./../middlewares/auth');
 
 router.get('/', authMiddelware, controlador.traerUsuarios);
 router.get('/:id', authMiddelware, controlador.traerUnUsuario);
-router.post('/crear_cuenta', authMiddelware, controlador.crearUsuarioSelf);
 router.post('/', authMiddelware, controlador.crearUsuarioAdm);
 router.put('/:id', authMiddelware, controlador.actualizarUsuarioAdm);
 router.put('/', authMiddelware, controlador.actualizarUsuarios);

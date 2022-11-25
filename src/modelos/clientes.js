@@ -17,19 +17,15 @@ const schema = new Schema({
         type: String
     },
 
-    contraseña: {
-        type: String
-    },
-
-    rol: {
-        type: String
-    },
-
     direccion:{
         type: String
     },
 
     rfc: {
+        type: String
+    },
+
+    contraseña: {
         type: String
     },
 

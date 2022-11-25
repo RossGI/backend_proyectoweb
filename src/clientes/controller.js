@@ -14,6 +14,16 @@ function traerUsuarios(req, res) {
         })
     }
 
+
+    else if(activos === 'false'){
+        modelo.find({status : 0}).then(response =>{
+            res.send(response);
+        }).catch(err =>{
+            console.log('algo salio mal',err);
+            res.status(400).send();
+        })
+    }
+
     else{
 
         modelo.find({}).then(response =>{
@@ -46,16 +56,7 @@ function traerUnUsuario(req, res) {
     
 }
 
-//Corregir
-function crearUsuarioSelf(req, res) {
-    const datos = req.body;
-    modelo.create(datos).then(respuesta =>{
-        res.send(respuesta);
 
-    }).catch(err =>{
-        res.status(400).send('No se pudo guardar el usuario');
-    });
-}
 
 
 
@@ -212,7 +213,6 @@ function borrarUnUsuario(req,res){
 module.exports = {
     traerUnUsuario,
     traerUsuarios,
-    crearUsuarioSelf,
     crearUsuarioAdm,
     actualizarUsuarioAdm,
     actualizarUsuarios,
