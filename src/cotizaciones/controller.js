@@ -77,13 +77,42 @@ function actualizarCotizacion(req, res) {
     const largo = req.body.largo;
     const ancho = req.body.ancho;
     const status = req.body.status;
+    const total = req.body.total;
 
     modeli.findOne({_id: id}).then(response =>{
         if(response){
-            
+            if(origen != null){
+                response.origen = origen;
+            }
+            if(destino != null){
+                response.destino = destino;
+            }
+            if(tipoenvio != null){
+                response.tipoenvio = tipoenvio;
+            }
+            if(fechaentrega != null){
+                response.fechaentrega = fechaentrega;
+            }
+            if(pesogr != null){
+                response.pesogr = pesogr;
+            }
+            if(alto != null){
+                response.alto = alto;
+            }
+            if(largo != null){
+                response.largo = largo;
+            }
+            if(ancho != null){
+                response.ancho = ancho;
+            }
+            if( total!= null){
+                response.total = total;
+            }
+            response.save();
+        } else {
+            res.status(404).send('No se encontró la cotización')
         }
     })
-
 }
 
 module.exports = {
