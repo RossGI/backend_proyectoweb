@@ -2,14 +2,15 @@ const {Schema,model} = require('mongoose');
 
 const schema = new Schema({
     referencia: {type: String},
+    fechacotizacion:{type: Date},
     origen:     {type: String},
     destino:    {type: String},
     tipoenvio:  {type: String},
-    fecha:      {type: String},
-    pesogr:     {type: String},
-    alto:       {type: String},
-    largo:      {type: String},
-    ancho:      {type: String}
+    fechaentrega:{type: Date},
+    pesogr:     {type: Number},
+    alto:       {type: Number},
+    largo:      {type: Number},
+    ancho:      {type: Number}
 });
 
 module.exports = model('cotizaciones',schema);
