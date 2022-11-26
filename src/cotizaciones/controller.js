@@ -13,6 +13,13 @@ function traerCotizaciones(req, res) {
             console.log('Algo salió al ', err);
             res.status(400).send()
         })
+    } else if(activos === 'false'){
+        modelo.find({status : 0}).then(response =>{
+            res.send(response);
+        }).catch(err =>{
+            console.log('Algo salió mal', err);
+            res.status(400).send();
+        })
     } else {
         modelo.find({}).then(response=>{
             res.send(response);

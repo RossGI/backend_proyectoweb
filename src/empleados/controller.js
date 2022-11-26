@@ -1,12 +1,35 @@
-function traerEmpleado(req, res) {
+const { response } = require('express');
+const { model } = require('mongoose');
+const modelo = require('../modelos/empleados');
+
+//Mostrar empleados
+function traerEmpleados(req, res) {
     const activos = req.query.activos;
-    if(activos === "true") {
-        res.send('solo los empleados activos');
+    if(activos === "true"){
+        modelo.find({status: 1}).then(response =>{
+            res.send(response);
+        }).catch(err =>{
+            console.log('Algo salión mal', err);
+            res.status(400).send();
+        })
+    } else if(activos === 'false'){
+        modelo.find({status : 0}).then(response =>{
+            res.send(response);
+        }).catch(err=>{
+            console.log('Algo salió mal', err);
+            res.status(400).send();
+        })
     } else {
-        res.send('todos los empleados');
+        modelo.find({}).then(response =>{
+            res.send(response);
+        }).catch(err => {
+            console.log('Algo salió mal');
+            res.status(400).send();
+        })
     }
 }
 
+//Mostrar un empleado
 function traerUnEmpleado(req, res) {
     const id = req.params.id;
     res.send('los datos del usuario ' + id);
@@ -40,7 +63,7 @@ function actualizarEmpleado(req, res) {
 
 module.exports = {
     traerUnEmpleado,
-    traerEmpleado,
+    traerEmpleados,
     crearEmpleado,
     eliminarEmpleado,
     actualizarEmpleado
