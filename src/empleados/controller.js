@@ -1,3 +1,4 @@
+
 const modelo = require('./../modelos/empleados');
 
 
@@ -11,9 +12,10 @@ function traerEmpleados(req, res) {
         res.status(400).send();
     })
 
-    
-}
+}   
 
+
+//Mostrar un empleado
 function traerUnEmpleado(req, res) {
     const id = req.params.id;
   
