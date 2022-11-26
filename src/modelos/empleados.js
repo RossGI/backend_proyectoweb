@@ -17,19 +17,21 @@ const schema = new Schema({
         type: String
     },
 
-    contraseña: {
+    puesto:{
         type: String
     },
+
 
     rol: {
         type: String
     },
 
-    direccion:{
+
+    rfc: {
         type: String
     },
 
-    rfc: {
+    contraseña: {
         type: String
     },
 
@@ -37,6 +39,7 @@ const schema = new Schema({
         type: Number,
         default: 1
     }
+
 
 });
 
