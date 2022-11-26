@@ -10,7 +10,8 @@ const schema = new Schema({
     pesogr:     {type: Number},
     alto:       {type: Number},
     largo:      {type: Number},
-    ancho:      {type: Number}
+    ancho:      {type: Number},
+    total:      {type: Number}
 });
 
 module.exports = model('cotizaciones',schema);
