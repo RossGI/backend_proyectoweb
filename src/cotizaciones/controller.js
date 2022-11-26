@@ -60,7 +60,7 @@ function eliminarCotizacion(req, res) {
             res.send('Cotización eliminada');
         } else{
             res.status(404).send('No se encontró la cotización');
-        }
+}
     }).catch(err => {
         res.status(400).send('El folio no es correcto');
     })
