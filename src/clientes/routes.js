@@ -8,5 +8,6 @@ router.post('/', authMiddelware, controlador.crearUsuarioAdm);
 router.put('/:id', authMiddelware, controlador.actualizarUsuarioAdm);
 router.put('/', authMiddelware, controlador.actualizarUsuarios);
 router.delete('/:id',authMiddelware,controlador.borrarUnUsuario);
+router.put('/:id/activar',authMiddelware,controlador.activarUnUsuario);
 
 module.exports = router;

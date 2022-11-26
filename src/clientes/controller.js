@@ -191,11 +191,32 @@ function actualizarUsuarios(req, res) {
 
 function borrarUnUsuario(req,res){
     const id = req.params.id;
-    modelo.findOne({id_: id}).then(respuesta =>{
+    modelo.findOne({_id: id}).then(respuesta =>{
         if(respuesta){
             respuesta.status = 0;
             respuesta.save();
             res.send('Usuario eliminado');
+        }
+
+        else{
+            res.status(404).send('No se encontró el usuario');
+        }
+        
+    }).catch(err =>{
+        res.status(400).send('El ID no es correcto');
+    })
+
+}
+
+
+
+function activarUnUsuario(req,res){
+    const id = req.params.id;
+    modelo.findOne({_id: id}).then(respuesta =>{
+        if(respuesta){
+            respuesta.status = 1;
+            respuesta.save();
+            res.send('Usuario activado');
         }
 
         else{
@@ -216,5 +237,6 @@ module.exports = {
     crearUsuarioAdm,
     actualizarUsuarioAdm,
     actualizarUsuarios,
-    borrarUnUsuario
+    borrarUnUsuario,
+    activarUnUsuario
 };
