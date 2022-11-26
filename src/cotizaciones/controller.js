@@ -69,7 +69,13 @@ function eliminarCotizacion(req, res) {
 
 function actualizarCotizacion(req, res) {
     const origen = req.body.origen;
-    const volumen = req.body.volume
+    const destino = req.body.destino;
+    const tipoenvio = req.body.tipoenvio;
+    const fechaentrega = req.body.fechaentrega;
+    const pesogr = req.body.pesogr;
+    const alto = req.body.alto;
+    const largo = req.body.largo;
+    const ancho = req.body.ancho;
     const status = req.body.status;
 
     modeli.findOne({_id: id}).then(response =>{
