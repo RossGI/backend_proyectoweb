@@ -62,34 +62,31 @@ function actualizarUsuarioAdm(req, res) {
     const correo = req.body.correo;
     const telefono = req.body.telefono;
     const contraseña = req.body.contraseña;
-    const rol = req.body.rol;
     const direccion = req.body.direccion;
     const rfc = req.body.rfc;
 
     modelo.findOne({_id : id}).then(response =>{
         if(response){
-            if(nombre != null){
+            if(nombre != null && nombre != ''){
                 response.nombre = nombre;
             }
-            if(apellido != null){
+            if(apellido != null && apellido != ''){
                 response.apellido = apellido;
             }
-            if(correo != null){
+            if(correo != null && correo != ''){
                 response.correo = correo;
             }
-            if(telefono != null){
+            if(telefono != null && telefono != ''){
                 response.telefono = telefono;
             }
-            if(contraseña != null){
+            if(contraseña != null && contraseña != ''){
                 response.contraseña = contraseña;
             }
-            if(rol != null){
-                response.rol = rol;
-            }
-            if(direccion != null){
+            
+            if(direccion != null && direccion != ''){
                 response.direccion = direccion;
             }
-            if(rfc != null){
+            if(rfc != null && rfc != ''){
                 response.rfc = rfc;
             }
             response.save();
@@ -144,7 +141,7 @@ function actualizarUsuarios(req, res) {
 }
 
 
-//Eliminar u usuario
+//Eliminar un usuario
 function borrarUnUsuario(req,res){
     const id = req.params.id;
 

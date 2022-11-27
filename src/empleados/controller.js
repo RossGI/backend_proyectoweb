@@ -5,7 +5,7 @@ const modelo = require('./../modelos/empleados');
 function traerEmpleados(req, res) {
     
     
-    modelo.find({}).then(response =>{
+    modelo.find({status : 1}).then(response =>{
         res.send(response);
     }).catch(err =>{
         console.log('algo salio mal',err);
@@ -80,36 +80,36 @@ function actualizarEmpleado(req, res) {
 
         if(response){
 
-            if(nombre != null){
+            if(nombre != null && nombre != ''){
 
                 response.nombre = nombre;
             }
                 
-            if(apellido != null){
+            if(apellido != null && apellido != ''){
                 response.apellido = apellido;
             }
                 
-            if(correo != null){
+            if(correo != null && correo != ''){
                 response.correo = correo;
             }
                
-            if(telefono != null){
+            if(telefono != null && telefono != ''){
                 response.telefono = telefono;
             }
 
-            if(puesto != null){
+            if(puesto != null && puesto != ''){
                 response.puesto = puesto;
             }
 
-            if(rol != null){
+            if(rol != null && rol != ''){
                 response.rol = rol;
             }
 
-            if(rfc != null){
+            if(rfc != null && rfc != ''){
                 response.rfc = rfc;
             }
     
-            if(contraseña != null){
+            if(contraseña != null && contraseña != ''){
                 response.contraseña = contraseña;
             }
             
