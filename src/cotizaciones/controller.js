@@ -113,6 +113,9 @@ function actualizarCotizacion(req, res) {
                 response.ancho = ancho;
             }
             if( total!= null){
+                response.status = status;
+            }
+            if( total!= null){
                 response.total = total;
             }
             response.save();
