@@ -74,7 +74,27 @@ function eliminarCotizacion(req, res) {
 }
 
 
+//Activar cotización
+function activarCotizacion(req,res){
+    const id = req.params.id;
+
+    modelo.findOne({_id: id}).then(respuesta =>{
+        if(respuesta){
+            respuesta.status = 1;
+            respuesta.save();
+            res.send('Cotizacion activada');
+        } else{
+            res.status(404).send('No se encontró la cotización');
+        }
+    }).catch(err =>{
+        res.status(400).send('El ID no es correcto');
+    })
+}
+
+
 function actualizarCotizacion(req, res) {
+    const id = req.params.id;
+    const referencia = req.body.referencia;
     const origen = req.body.origen;
     const destino = req.body.destino;
     const tipoenvio = req.body.tipoenvio;
@@ -83,11 +103,15 @@ function actualizarCotizacion(req, res) {
     const alto = req.body.alto;
     const largo = req.body.largo;
     const ancho = req.body.ancho;
-    const status = req.body.status;
     const total = req.body.total;
 
-    modeli.findOne({_id: id}).then(response =>{
+    modelo.findOne({_id: id}).then(response =>{
         if(response){
+
+            if(referencia != null && referencia != ''){
+                response.referencia = referencia;
+            }
+
             if(origen != null && origen != ''){
                 response.origen = origen;
             }
@@ -127,5 +151,6 @@ module.exports = {
     traerUnaCotizacion,
     crearCotizacion,
     eliminarCotizacion,
-    actualizarCotizacion
+    actualizarCotizacion,
+    activarCotizacion
 };
