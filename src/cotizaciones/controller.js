@@ -88,31 +88,31 @@ function actualizarCotizacion(req, res) {
 
     modeli.findOne({_id: id}).then(response =>{
         if(response){
-            if(origen != null){
+            if(origen != null && origen != ''){
                 response.origen = origen;
             }
-            if(destino != null){
+            if(destino != null && destino!= ''){
                 response.destino = destino;
             }
-            if(tipoenvio != null){
+            if(tipoenvio != null && tipoenvio != ''){
                 response.tipoenvio = tipoenvio;
             }
-            if(fechaentrega != null){
+            if(fechaentrega != null && fechaentrega != ''){
                 response.fechaentrega = fechaentrega;
             }
-            if(pesogr != null){
+            if(pesogr != null && pesogr != ''){
                 response.pesogr = pesogr;
             }
-            if(alto != null){
+            if(alto != null && alto != ''){
                 response.alto = alto;
             }
-            if(largo != null){
+            if(largo != null && largo != ''){
                 response.largo = largo;
             }
-            if(ancho != null){
+            if(ancho != null && ancho != ''){
                 response.ancho = ancho;
             }
-            if( total!= null){
+            if( total!= null && total != ''){
                 response.total = total;
             }
             response.save();

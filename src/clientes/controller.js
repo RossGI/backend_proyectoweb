@@ -98,47 +98,7 @@ function actualizarUsuarioAdm(req, res) {
     })
 }
 
-//Corregir 
-function actualizarUsuarios(req, res) {
-    const nombre = req.body.nombre;
-        const apellido = req.body.apellido;
-        const correo = req.body.correo;
-        const telefono = req.body.telefono;
-        const contraseña = req.body.contraseña;
-        const rol = req.body.rol;
-        const direccion = req.body.direccion;
-        const rfc = req.body.rfc;
 
-        modelo.find({}).then(response =>{
-            if(nombre != null){
-                response.nombre = nombre;
-            }
-            if(apellido != null){
-                response.apellido = apellido;
-            }
-            if(correo != null){
-                response.correo = correo;
-            }
-            if(telefono != null){
-                response.telefono = telefono;
-            }
-            if(contraseña != null){
-                response.contraseña = contraseña;
-            }
-            if(rol != null){
-                response.rol = rol;
-            }
-            if(direccion != null){
-                response.direccion = direccion;
-            }
-            if(rfc != null){
-                response.rfc = rfc;
-            }
-            response.save();
-        }).catch(err =>{
-            res.status(400).send('no se puede actualizar');
-        })
-}
 
 
 //Eliminar un usuario
@@ -183,7 +143,6 @@ module.exports = {
     traerUsuarios,
     crearUsuarioAdm,
     actualizarUsuarioAdm,
-    actualizarUsuarios,
     borrarUnUsuario,
     activarUnUsuario
 };
