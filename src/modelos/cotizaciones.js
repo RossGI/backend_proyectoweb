@@ -12,10 +12,7 @@ const schema = new Schema({
     largo:      {type: Number},
     ancho:      {type: Number},
     total:      {type: Number},
-    status:{
-        type: Number,
-        default: 1
-    }
+    status:     {type: Number, default: 1}
 });
 
 module.exports = model('cotizaciones',schema);
