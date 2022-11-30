@@ -14,8 +14,8 @@ const iniciar_sesionRoutes = require('./src/iniciar_sesion/routes');
 
 const app = express();
 
-//const port = process.env.PORT || 3000; 
-const port = 3000;
+const port = process.env.PORT || 3000; 
+// const port = 3000;
 
 app.use(cors());
 
@@ -40,7 +40,7 @@ app.use('/empleados',empleadosRoutes);
 app.use('/iniciar_sesion',iniciar_sesionRoutes);
 
 
-const uri = 'mongodb+srv://nuevoUsuario:HolaMundo123@cluster0.hvpjxio.mongodb.net/paqueteria_tamazula?retryWrites=true&w=majority';
+const uri = process.env.DB_URL;
 
 
 

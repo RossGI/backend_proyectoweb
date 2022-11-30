@@ -6,12 +6,12 @@ const modeltoken = require('../modelos/token');
 
 const LoginController = {
     inicioSesion: async (req,res) =>{
-        
         try{
             const {correo,contraseña} = req.body;
             const user = await model2.findOne({correo: correo});
 
-            if(user && (await bcrypt.compare(contraseña,user.contraseña))){
+            // if(user && (bcrypt.compare(contraseña,user.contraseña))){ // El bcrypt no funciona bien
+            if(user && user.contraseña === contraseña){
 
                 const token = jwt.sign(
                     {user_id: user._id, correo},
@@ -23,15 +23,11 @@ const LoginController = {
 
                 user.token = token;
 
-                
-
                 res.status(200).json(user);
 
+            } else {
+                res.status(400).send("Credenciales invalidas");
             }
-
-            res.status(400).send("Credenciales invalidas");
-
-
 
         }catch (err){
             console.log(err);
