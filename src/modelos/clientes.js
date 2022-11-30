@@ -29,6 +29,10 @@ const schema = new Schema({
         type: String
     },
 
+    token:{
+        type: String
+    },
+
     status:{
         type: Number,
         default: 1

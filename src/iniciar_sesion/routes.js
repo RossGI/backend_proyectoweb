@@ -4,7 +4,9 @@ const authMiddelware = require('./../middlewares/auth');
 
 
 router.post('/',controller.inicioSesion);
-router.get('/', controller.inicioSesion);
+router.post('/usuario',controller.crearUsuario);
+
+
 
 
 module.exports = router;

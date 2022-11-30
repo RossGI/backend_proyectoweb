@@ -1,4 +1,6 @@
 const modelo = require('.././modelos/clientes');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 //Mostrar todos los usuarios
 function traerUsuarios(req, res) {
@@ -45,13 +47,58 @@ function traerUnUsuario(req, res) {
 
 
 //crear nuevo usuario
-function crearUsuarioAdm(req, res) {
-    const datos = req.body;
-    modelo.create(datos).then(respuesta =>{
-        res.send(respuesta);
-    }).catch(err =>{
-        res.status(400).send('No se pudo guardar el usuario');
-    });
+async function crearUsuarioAdm(req, res) {
+
+
+
+    try{
+
+        const {nombre,apellido,correo,telefono,direccion,rfc,contraseña} = req.body;
+        const oldUser = await modelo.findOne({correo: req.body.correo})
+
+        if(oldUser){
+            return res.status(409).send("Ya existe el usuario");
+
+        }
+
+        //encryptedPassword = await bcrypt.hash(contraseña,5);
+
+        const user = await modelo.create({
+            nombre,
+            apellido,
+            correo,
+            telefono,
+            direccion,
+            rfc,
+            contraseña
+
+        });
+
+        
+        const token = jwt.sign(
+            {user_id: user._id, correo},
+            process.env.TOKEN_KEY,
+            {
+                expiresIn: "2h",
+            }
+        );
+
+        user.token = token;
+
+        console.log(token);
+
+
+        res.status(201).json(user);
+
+
+
+
+    }catch (err){
+        console.log(err);
+    }
+
+
+
 }
 
 //Actualizar usuario admin

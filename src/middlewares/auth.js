@@ -1,3 +1,4 @@
+
 function authMiddelware(req, res, next) {
     const token = req.query.token;
 

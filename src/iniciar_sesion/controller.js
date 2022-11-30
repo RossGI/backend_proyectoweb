@@ -1,28 +1,64 @@
-//const modelo = require('.././modelos/iniciar_sesion');
+const modelo = require('.././modelos/iniciar_sesion');
+const model2 = require('../modelos/clientes');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const modeltoken = require('../modelos/token');
 
-function inicioSesion(req, res) {
-    console.log(req.body);
-    model.findOne(res.body).then(user =>{
-        if(user){ //despues utilizar jwt para creacion del token
-            const token = 'hefifefhweiuf99hfeq9fyhq3whuf';
-            modelToken.create({
-                token: token,
-                userId: user._id
-            }).then(response =>{
-                res.send(token);
-            })
+const LoginController = {
+    inicioSesion: async (req,res) =>{
         
+        try{
+            const {correo,contraseña} = req.body;
+            const user = await model2.findOne({correo: correo});
+
+            if(user && (await bcrypt.compare(contraseña,user.contraseña))){
+
+                const token = jwt.sign(
+                    {user_id: user._id, correo},
+                    process.env.TOKEN_KEY,
+                    {
+                        expiresIn:"2h",
+                    }
+                );
+
+                user.token = token;
+
+                
+
+                res.status(200).json(user);
+
+            }
+
+            res.status(400).send("Credenciales invalidas");
 
 
-        }else{
-            res.status(401).send();
+
+        }catch (err){
+            console.log(err);
         }
-    })
-    res.send({'token': '123'});
+        
+    },
+
+    crearUsuario: (req,res) =>{
+        const datos = req.body;
+        modelo.create(datos).then(respuesta =>{
+            res.send(respuesta);
+        }).catch(err =>{
+            res.status(400).send('No se pudo guardar el usuario');
+        })
+    },
+
+
+
 }
 
 
-module.exports = {
-    inicioSesion
-};
+
+
+
+
+
+module.exports = LoginController;
+
+
 

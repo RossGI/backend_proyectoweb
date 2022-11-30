@@ -1,15 +1,14 @@
 const {Schema,model} = require('mongoose');
 
 const schema = new Schema({
-    correo: {
+    token: {
         type: String
     },
 
-    contraseña:{
+    userId:{
         type: String
     }
 
 });
 
-module.exports = model('usuarios',schema);
-
+module.exports = model('tokens',schema);
